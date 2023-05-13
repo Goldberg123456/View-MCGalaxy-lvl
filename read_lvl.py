@@ -53,7 +53,7 @@ def place_block(x, y, z, block):
     texture = "textures/grass.png"
     )
 
-  if (block == 0 or block > 65):
+  if (block == 0 or block > 2):
     place_invalid_block(x, y, z)
 
 for x in range(width):
