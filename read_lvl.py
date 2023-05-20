@@ -9,7 +9,7 @@ with gzip.open(level_to_read, 'rb') as f:
   data = f.read()
 
   # Read the header
-(identifier, width, length, height, spawn_x, spawn_z, spawn_y, spawn_yaw, spawn_pitch, min_access, min_build) = struct.unpack('<HHHHHHHHBBB', data[:18])
+(identifier, width, length, height, spawn_x, spawn_z, spawn_y, spawn_yaw, spawn_pitch, min_access, min_build) = struct.unpack('<HHHHHHHHBBB', data[:19])
 
 
 def get_block(x, y, z):
@@ -52,8 +52,46 @@ def place_block(x, y, z, block):
     parent = scene,
     texture = "textures/grass.png"
     )
+  if (block == 3):
+    Entity(
+    model="cube", collider="box", ignore = True,
+    position = (x, y, z),
+    parent = scene,
+    texture = "textures/dirt.png"
+    )
+  if (block == 4):
+    Entity(
+    model="cube", collider="box", ignore = True,
+    position = (x, y, z),
+    parent = scene,
+    texture = "textures/cobblestone.png"
+    )
 
-  if (block == 0 or block > 2):
+  if (block == 5):
+    Entity(
+    model="cube", collider="box", ignore = True,
+    position = (x, y, z),
+    parent = scene,
+    texture = "textures/wood.png"
+    )
+
+  if (block == 6):
+    Entity(
+    model="cube", collider="box", ignore = True,
+    position = (x, y, z),
+    parent = scene,
+    texture = "textures/sapling.png"
+    )
+
+  if (block == 7):
+    Entity(
+    model="cube", collider="box", ignore = True,
+    position = (x, y, z),
+    parent = scene,
+    texture = "textures/bedrock.png"
+    )
+
+  if (block > 7):
     place_invalid_block(x, y, z)
 
 for x in range(width):
@@ -74,6 +112,3 @@ player.z = 0
 
 
 app.run()
-
-
-
