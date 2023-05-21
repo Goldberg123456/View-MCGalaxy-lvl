@@ -29,15 +29,14 @@ def get_block(x, y, z):
 
 app = Ursina()
 
-def place_invalid_block(x, y, z):
+def place_block(x, y, z, block):
+  if (block == -1):
     Entity(
     model="cube", collider="box", ignore = True,
     position = (x, y, z),
     parent = scene,
     texture = "textures/invalid.png"
     )
-
-def place_block(x, y, z, block):
   if (block == 1):
     Entity(
     model="cube", collider="box", ignore = True,
@@ -91,8 +90,64 @@ def place_block(x, y, z, block):
     texture = "textures/bedrock.png"
     )
 
-  if (block > 7):
-    place_invalid_block(x, y, z)
+  if (block == 8 or block == 9):
+    Entity(
+    model="cube", color=color.blue, collider="box", ignore = True,
+    position = (x, y, z),
+    parent = scene,
+    texture = "white_cube"
+    )
+
+  if (block == 10 or block == 11):
+    Entity(
+    model="cube", collider="box", ignore = True,
+    position = (x, y, z),
+    parent = scene,
+    texture = "textures/lava.png"
+    )
+
+  if (block == 12):
+    Entity(
+    model="cube", collider="box", ignore = True,
+    position = (x, y, z),
+    parent = scene,
+    texture = "textures/sand.png"
+    )
+
+  if (block == 13):
+    Entity(
+    model="cube", collider="box", ignore = True,
+    position = (x, y, z),
+    parent = scene,
+    texture = "textures/gravel.png"
+    )
+
+  if (block == 14):
+    Entity(
+    model="cube", collider="box", ignore = True,
+    position = (x, y, z),
+    parent = scene,
+    texture = "textures/gold_ore.png"
+    )
+
+  if (block == 15):
+    Entity(
+    model="cube", collider="box", ignore = True,
+    position = (x, y, z),
+    parent = scene,
+    texture = "textures/iron_ore.png"
+    )
+
+  if (block == 16):
+    Entity(
+    model="cube", collider="box", ignore = True,
+    position = (x, y, z),
+    parent = scene,
+    texture = "textures/coal_ore.png"
+    )
+
+  if (block > 16):
+    place_block(x, y, z, -1)
 
 for x in range(width):
   for y in range(height):
@@ -105,6 +160,8 @@ for x in range(width):
 
 player = FirstPersonController()
 
+scene.fog_color = color.rgb(201, 201, 201)
+scene.fog_density = 0.2
 
 player.x = 0
 player.y = 0
