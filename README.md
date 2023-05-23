@@ -2,7 +2,7 @@
 
 A python code that reads and views .lvl MCGalaxy level format.
 
-I need to add fog or something like that because its useless rendering big maps.
+I added a fog but it still renders very slow
 
 drop any .lvl file and enter it when you ran python code.
 
